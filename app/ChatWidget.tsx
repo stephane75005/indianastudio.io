@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 type ChatOption = { label: string; next: string }
 type ChatNode = { bot: string; options: ChatOption[] }
 
-const WHATSAPP_URL = 'https://wa.me/33684234852?text=' + encodeURIComponent('Bonjour, je viens du site Indiana Studio.')
+const WHATSAPP_NUMBER = '33684234852'
 
 // Arbre scripté v1 (zéro coût, zéro dépendance). Pour brancher une vraie IA plus tard :
 // remplacer `choose()` par un appel à une route /api/chat qui renvoie { bot, options }
@@ -53,7 +53,7 @@ const NODES: Record<string, ChatNode> = {
   contact: {
     bot: "Comment préférez-vous échanger ?",
     options: [
-      { label: 'WhatsApp', next: WHATSAPP_URL },
+      { label: 'WhatsApp', next: 'whatsapp' },
       { label: 'Formulaire de contact', next: '#contact' },
       { label: '← Retour', next: 'root' }
     ]
@@ -61,6 +61,16 @@ const NODES: Record<string, ChatNode> = {
 }
 
 type Message = { from: 'bot' | 'user'; text: string }
+
+function buildWhatsAppUrl(messages: Message[]) {
+  const transcript = messages
+    .map(m => (m.from === 'user' ? '➤ ' : '') + m.text)
+    .join('\n')
+  const text = messages.length
+    ? "Bonjour, je viens du site Indiana Studio. Résumé de mon échange avec l'assistant :\n\n" + transcript
+    : 'Bonjour, je viens du site Indiana Studio.'
+  return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text)
+}
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false)
@@ -86,11 +96,12 @@ export default function ChatWidget() {
   }, [open])
 
   const choose = (opt: ChatOption) => {
-    setMessages(m => [...m, { from: 'user', text: opt.label }])
-    if (opt.next.startsWith('http')) {
-      window.open(opt.next, '_blank', 'noopener,noreferrer')
+    if (opt.next === 'whatsapp') {
+      window.open(buildWhatsAppUrl(messages), '_blank', 'noopener,noreferrer')
+      setMessages(m => [...m, { from: 'user', text: opt.label }])
       return
     }
+    setMessages(m => [...m, { from: 'user', text: opt.label }])
     if (opt.next.startsWith('#')) {
       setOpen(false)
       requestAnimationFrame(() => {
