@@ -24,6 +24,8 @@ export async function POST(request: Request) {
 
   const nom = clean(data.get('nom'), 120);
   const email = clean(data.get('email'), 160);
+  const entreprise = clean(data.get('entreprise'), 120);
+  const telephone = clean(data.get('telephone'), 40);
   const offre = clean(data.get('offre'), 120);
   const message = String(data.get('message') ?? '').trim().slice(0, 4000);
 
@@ -40,10 +42,12 @@ export async function POST(request: Request) {
   const body = [
     'Nouvelle demande depuis indianastudio.io',
     '',
-    'Nom     : ' + nom,
-    'Email   : ' + email,
-    'Besoin  : ' + (offre || 'non précisé'),
-    'Date    : ' + new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
+    'Nom        : ' + nom,
+    'Entreprise : ' + (entreprise || 'non précisé'),
+    'Téléphone  : ' + (telephone || 'non précisé'),
+    'Email      : ' + email,
+    'Besoin     : ' + (offre || 'non précisé'),
+    'Date       : ' + new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
     '',
     'Projet :',
     message
