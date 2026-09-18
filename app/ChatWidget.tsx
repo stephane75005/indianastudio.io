@@ -62,6 +62,16 @@ const NODES: Record<string, ChatNode> = {
 
 type Message = { from: 'bot' | 'user'; text: string }
 
+function isStephaneAvailable() {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Europe/Paris', hour: 'numeric', hour12: false, weekday: 'short'
+  }).formatToParts(new Date())
+  const weekday = parts.find(p => p.type === 'weekday')?.value
+  const hour = Number(parts.find(p => p.type === 'hour')?.value)
+  const isWeekday = weekday !== 'Sat' && weekday !== 'Sun'
+  return isWeekday && hour >= 9 && hour < 19
+}
+
 function buildWhatsAppUrl(messages: Message[]) {
   const transcript = messages
     .map(m => (m.from === 'user' ? '➤ ' : '') + m.text)
@@ -76,7 +86,12 @@ export default function ChatWidget() {
   const [open, setOpen] = useState(false)
   const [nodeId, setNodeId] = useState('root')
   const [messages, setMessages] = useState<Message[]>([])
+  const [available, setAvailable] = useState(false)
   const threadRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setAvailable(isStephaneAvailable())
+  }, [])
 
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -182,7 +197,10 @@ export default function ChatWidget() {
             <svg viewBox="0 0 24 21" style={{ width: '13px', height: '11px', flex: 'none' }}><path d="M12 0 24 21H0Z" fill="#3845e1" /></svg>
             <div>
               <p style={{ margin: 0, fontSize: '13px', fontWeight: 800, color: '#f4f4f5' }}>Assistant Indiana Studio</p>
-              <p style={{ margin: 0, fontSize: '11px', color: 'rgba(244,244,245,.5)' }}>Réponse instantanée</p>
+              <p style={{ margin: 0, fontSize: '11px', color: 'rgba(244,244,245,.5)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span aria-hidden="true" style={{ width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: available ? '#22c55e' : 'rgba(244,244,245,.35)' }} />
+                {available ? 'Stéphane est disponible' : 'Stéphane est absent pour le moment'}
+              </p>
             </div>
           </div>
 
