@@ -297,7 +297,7 @@ export default function Home() {
             <span style={{ "color": "#3845e1" }}>05 / 05</span><span style={{ "color": "rgba(244,244,245,.45)" }}>Le studio</span>
           </div>
           <div style={{ "display": "grid", "gridTemplateColumns": "repeat(auto-fit,minmax(240px,1fr))", "gap": "48px", "alignItems": "start" }}>
-            <div style={{ "maxWidth": "140px" }}>
+            <div data-photo-block="" style={{ "maxWidth": "140px" }}>
               <div data-float="" style={{ "position": "relative", "width": "100%", "animation": "is-float 6s ease-in-out infinite", "willChange": "transform" }}>
                 <canvas data-photo-ions="" aria-hidden="true" style={{ "position": "absolute", "top": "-52px", "left": "-46px", "width": "calc(100% + 92px)", "height": "calc(100% + 104px)", "zIndex": "0", "pointerEvents": "none" }}></canvas>
                 <div aria-hidden="true" style={{ "position": "absolute", "top": "11px", "left": "11px", "right": "-11px", "bottom": "-11px", "background": "#3845e1", "opacity": ".5", "borderRadius": "6px", "zIndex": "1" }}></div>
