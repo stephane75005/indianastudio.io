@@ -1,0 +1,127 @@
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 400 900; font-display: swap;
+  src: url(https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTNDJp8B1oJ0vyVQ.woff2) format('woff2'); }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: #2b2c2e; color: #f4f4f5;
+  font-family: Archivo, system-ui, sans-serif; font-size: 15px; line-height: 1.55;
+  overflow-x: clip; -webkit-font-smoothing: antialiased;
+}
+a { color: #8f9bff; text-decoration: none; }
+a:hover { color: #fff; }
+::selection { background: #3845e1; color: #fff; }
+:focus-visible { outline: 2px solid #8f9bff; outline-offset: 3px; border-radius: 2px; }
+section[id] { scroll-margin-top: 100px; }
+
+[data-skip] { position: absolute; left: 28px; top: -200px; z-index: 200; background: #3845e1; color: #fff;
+  font-weight: 800; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 14px 22px; border-radius: 999px; transition: top .25s ease; }
+[data-skip]:focus { top: 18px; color: #fff; }
+
+#contact input::placeholder, #contact textarea::placeholder { color: rgba(255,255,255,.58); opacity: 1; }
+
+@keyframes is-float { 0%, 100% { transform: translate3d(0,-5px,0); } 50% { transform: translate3d(0,5px,0); } }
+@keyframes is-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes is-blink { 0%, 100% { opacity: 1; } 50% { opacity: .15; } }
+@keyframes is-spin { to { transform: rotate(360deg); } }
+@keyframes is-drift { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) { [data-float] { animation: none !important; } }
+@media (hover: none) { [data-cursor], [data-cursor-dot] { display: none !important; } }
+@media (max-width: 1080px) { [data-nav] { display: none !important; } [data-burger] { display: grid !important; } }
+@media (max-width: 560px) { [data-header] [href="#contact"] { display: none !important; } }
+@media (max-height: 660px), (max-width: 700px) { [data-hero-cue] { display: none !important; } }
+
+/* états :hover / :focus extraits du design (battent les styles inline) */
+.x1:hover { background-position:0 0 !important }
+.x2:hover { background:rgba(244,244,245,.12) !important; border-color:rgba(244,244,245,.4) !important }
+.x3:hover { color:#fff !important }
+.x4:hover { color:#fff !important }
+.x5:hover { color:#fff !important }
+.x6:hover { color:#fff !important }
+.x7:hover { color:#fff !important }
+.x8:hover { background-position:-35% 0 !important; background-color:#2c37c4 !important; box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 28px rgba(56,69,225,.4) !important }
+.x9:hover { background:rgba(244,244,245,.08) !important }
+.x10:hover { background:rgba(244,244,245,.08) !important }
+.x11:hover { background:rgba(244,244,245,.08) !important }
+.x12:hover { background:rgba(244,244,245,.08) !important }
+.x13:hover { background:rgba(244,244,245,.08) !important }
+.x14:hover { background:#2c37c4 !important }
+.x15:hover { background-position:-35% 0 !important; background-color:#2c37c4 !important; box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 28px rgba(56,69,225,.4) !important }
+.x16:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x17:hover { background:#34353a !important }
+.x18:hover { background:#34353a !important }
+.x19:hover { background:#34353a !important }
+.x20:hover { background:#34353a !important }
+.x21:hover { background:#34353a !important }
+.x22:hover { background:#34353a !important }
+.x23:hover { background:#3a3b42 !important }
+.x24:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x25:hover { background:#3a3b42 !important }
+.x26:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x27:hover { background:#3a3b42 !important }
+.x28:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x29:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x30:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x31:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x32:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x33:hover { background-position:-35% 0 !important; transform:translateY(-1px) !important; box-shadow:0 12px 30px rgba(0,0,0,.22) !important }
+.x34:hover { background-position:0 0 !important }/* règles issues du helmet de la maquette */
+html { scroll-behavior: smooth; }
+  body { margin:0; background:#2b2c2e; color:#f4f4f5; }
+  a { color:#8f9bff; text-decoration:none; }
+  a:hover { color:#fff; }
+  ::selection { background:#3845e1; color:#fff; }
+  @keyframes is-float { 0%,100% { transform: translate3d(0,-5px,0); } 50% { transform: translate3d(0,5px,0); } }
+  @keyframes is-sheen { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { [data-sheen] { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { [data-float] { animation: none !important; } }
+  #contact input::placeholder, #contact textarea::placeholder { color:rgba(255,255,255,.58); opacity:1; }
+  :focus-visible { outline:2px solid #8f9bff; outline-offset:3px; border-radius:2px; }
+  [data-skip] { position:absolute; left:28px; top:-200px; z-index:200; background:#3845e1; color:#fff; font-weight:800; font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:14px 22px; border-radius:999px; transition:top .25s ease; }
+  [data-skip]:focus { top:18px; color:#fff; }
+  @keyframes is-marquee { from { transform:translateX(0) } to { transform:translateX(-50%) } }
+  @keyframes is-blink { 0%,100% { opacity:1 } 50% { opacity:.15 } }
+  @keyframes is-spin { to { transform:rotate(360deg) } }
+  @keyframes is-drift { 0% { transform:translateY(0) } 50% { transform:translateY(-10px) } 100% { transform:translateY(0) } }
+  @media (hover: none) { [data-cursor], [data-cursor-dot] { display: none !important; } }
+  @media (max-width: 1080px) { [data-nav] { display: none !important; } [data-burger] { display: grid !important; } }
+  @media (max-width: 560px) { [data-header] [href="#contact"] { display: none !important; } }
+  @media (max-height: 660px), (max-width: 700px) { [data-hero-cue] { display: none !important; } }
+
+/* états :hover / :focus extraits du design (battent les styles inline) */
+.x1:hover { background-position:0 0 !important }
+.x2:hover { background:rgba(244,244,245,.12) !important; border-color:rgba(244,244,245,.4) !important }
+.x3:hover { color:#fff !important }
+.x4:hover { color:#fff !important }
+.x5:hover { color:#fff !important }
+.x6:hover { color:#fff !important }
+.x7:hover { color:#fff !important }
+.x8:hover { background-position:-35% 0 !important; background-color:#2c37c4 !important; box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 28px rgba(56,69,225,.4) !important }
+.x9:hover { background:rgba(244,244,245,.08) !important }
+.x10:hover { background:rgba(244,244,245,.08) !important }
+.x11:hover { background:rgba(244,244,245,.08) !important }
+.x12:hover { background:rgba(244,244,245,.08) !important }
+.x13:hover { background:rgba(244,244,245,.08) !important }
+.x14:hover { background:#2c37c4 !important }
+.x15:hover { background-position:-35% 0 !important; background-color:#2c37c4 !important; box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 28px rgba(56,69,225,.4) !important }
+.x16:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x17:hover { background:#34353a !important }
+.x18:hover { background:#34353a !important }
+.x19:hover { background:#34353a !important }
+.x20:hover { background:#34353a !important }
+.x21:hover { background:#34353a !important }
+.x22:hover { background:#34353a !important }
+.x23:hover { background:#3a3b42 !important }
+.x24:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x25:hover { background:#3a3b42 !important }
+.x26:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x27:hover { background:#3a3b42 !important }
+.x28:hover { background-position:-35% 0 !important; border-color:#f4f4f5 !important; background-color:rgba(244,244,245,.1) !important }
+.x29:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x30:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x31:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x32:focus { border-color:#fff !important; background:rgba(255,255,255,.16) !important }
+.x33:hover { background-position:-35% 0 !important; transform:translateY(-1px) !important; box-shadow:0 12px 30px rgba(0,0,0,.22) !important }
+.x34:hover { background-position:0 0 !important }
