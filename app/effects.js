@@ -663,7 +663,8 @@ export function initEffects() {
         return;
       }
       if (!this._alive) return;
-  
+
+      try {
       const accent = new THREE.Color(this.props.accentColor ?? '#3845e1');
       const amp = (this.props.animIntensity ?? 3) / 3;
       const detail = Math.min(window.innerWidth, 1400) < 700 ? 14 : 22;
@@ -735,24 +736,32 @@ export function initEffects() {
       const loop = () => {
         if (!this._alive) return;
         this._raf = requestAnimationFrame(loop);
-        const t = (performance.now() - t0) / 1000;
-        for (let i = 0; i < pos.count; i++) {
-          const j = i * 3;
-          const bx = base[j], by = base[j + 1], bz = base[j + 2];
-          const k = 1 + noise(bx, by, bz, t * 0.42) * 0.085 * amp;
-          pos.array[j] = bx * k;
-          pos.array[j + 1] = by * k;
-          pos.array[j + 2] = bz * k;
+        try {
+          const t = (performance.now() - t0) / 1000;
+          for (let i = 0; i < pos.count; i++) {
+            const j = i * 3;
+            const bx = base[j], by = base[j + 1], bz = base[j + 2];
+            const k = 1 + noise(bx, by, bz, t * 0.42) * 0.085 * amp;
+            pos.array[j] = bx * k;
+            pos.array[j + 1] = by * k;
+            pos.array[j + 2] = bz * k;
+          }
+          pos.needsUpdate = true;
+          if (frame++ % 2 === 0) geo.computeVertexNormals();
+          mx += (tx - mx) * 0.045;
+          my += (ty - my) * 0.045;
+          group.rotation.y = t * 0.14 + mx * 0.55;
+          group.rotation.x = Math.sin(t * 0.21) * 0.12 - my * 0.4;
+          renderer.render(scene, camera);
+        } catch (err) {
+          if (this._raf) cancelAnimationFrame(this._raf);
+          console.warn('three.js — animation du hero interrompue (échec de rendu WebGL)', err);
         }
-        pos.needsUpdate = true;
-        if (frame++ % 2 === 0) geo.computeVertexNormals();
-        mx += (tx - mx) * 0.045;
-        my += (ty - my) * 0.045;
-        group.rotation.y = t * 0.14 + mx * 0.55;
-        group.rotation.x = Math.sin(t * 0.21) * 0.12 - my * 0.4;
-        renderer.render(scene, camera);
       };
       loop();
+      } catch (err) {
+        console.warn('three.js — hero sans animation 3D (échec de rendu WebGL)', err);
+      }
     }
   
     renderVals() { return {}; }
