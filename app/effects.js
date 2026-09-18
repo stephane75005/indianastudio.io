@@ -435,12 +435,12 @@ export function initEffects() {
     async _heroVideo() {
       const v = await this._waitFor(() => document.querySelector('[data-hero-video]'));
       if (!v || !this._alive) return;
-      const light = matchMedia('(max-width: 700px)').matches
-        || matchMedia('(prefers-reduced-motion: reduce)').matches
+      const skip = matchMedia('(prefers-reduced-motion: reduce)').matches
         || (navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || '')));
-      if (light) { v.remove(); return; }
+      if (skip) { v.remove(); return; }
+      const mobile = matchMedia('(max-width: 700px)').matches;
       try {
-        v.src = '/assets/hero-triangle.mp4';
+        v.src = mobile ? '/assets/hero-triangle-mobile.mp4' : '/assets/hero-triangle.mp4';
         v.load();
         const ready = () => {
           v.pause();
