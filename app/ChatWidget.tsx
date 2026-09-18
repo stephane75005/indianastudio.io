@@ -100,15 +100,27 @@ export default function ChatWidget() {
   return (
     <>
       {!open && (
-        <span
-          data-chat-pulse=""
-          aria-hidden="true"
-          style={{
-            position: 'fixed', right: '24px', bottom: '24px', zIndex: 99,
-            width: '56px', height: '56px', borderRadius: '50%',
-            background: 'rgba(56,69,225,.55)', pointerEvents: 'none'
-          }}
-        />
+        <>
+          <span
+            data-chat-pulse=""
+            aria-hidden="true"
+            style={{
+              position: 'fixed', right: '24px', bottom: '24px', zIndex: 99,
+              width: '56px', height: '56px', borderRadius: '50%',
+              background: 'rgba(56,69,225,.75)', pointerEvents: 'none'
+            }}
+          />
+          <span
+            data-chat-pulse=""
+            aria-hidden="true"
+            style={{
+              position: 'fixed', right: '24px', bottom: '24px', zIndex: 99,
+              width: '56px', height: '56px', borderRadius: '50%',
+              background: 'rgba(56,69,225,.75)', pointerEvents: 'none',
+              animationDelay: '1s'
+            }}
+          />
+        </>
       )}
       <button
         type="button"
