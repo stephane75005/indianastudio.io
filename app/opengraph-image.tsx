@@ -18,7 +18,7 @@ export default function Image() {
           <span>Indiana Studio</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <div style={{ fontSize: 74, fontWeight: 800, lineHeight: 1.02, letterSpacing: '-0.035em', maxWidth: '900px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', fontSize: 74, fontWeight: 800, lineHeight: 1.02, letterSpacing: '-0.035em', maxWidth: '900px' }}>
             Design <span style={{ color: '#8f9bff' }}>×</span> Code <span style={{ color: '#8f9bff' }}>×</span> IA
           </div>
           <div style={{ fontSize: 30, color: 'rgba(244,244,245,0.66)', maxWidth: '820px' }}>
