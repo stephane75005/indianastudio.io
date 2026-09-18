@@ -9,3 +9,6 @@ next-env.d.ts
 .DS_Store
 .build-css.txt
 .build-jsx.txt
+.claude
+.agents
+skills-lock.json

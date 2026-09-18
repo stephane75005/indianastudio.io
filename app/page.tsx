@@ -1,4 +1,5 @@
 import EffectsClient from './EffectsClient'
+import ChatWidget from './ChatWidget'
 
 export default function Home() {
   return (
@@ -375,6 +376,7 @@ export default function Home() {
         </footer>
       </div>
       <EffectsClient />
+      <ChatWidget />
     </>
   );
 }

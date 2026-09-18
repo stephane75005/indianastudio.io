@@ -26,11 +26,17 @@ section[id] { scroll-margin-top: 100px; }
 @keyframes is-blink { 0%, 100% { opacity: 1; } 50% { opacity: .15; } }
 @keyframes is-spin { to { transform: rotate(360deg); } }
 @keyframes is-drift { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+@keyframes is-chat-pulse { 0% { transform: scale(1); opacity: .75; } 70% { opacity: .12; } 100% { transform: scale(2.4); opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) { [data-float] { animation: none !important; } }
 @media (hover: none) { [data-cursor], [data-cursor-dot] { display: none !important; } }
 @media (max-width: 1080px) { [data-nav] { display: none !important; } [data-burger] { display: grid !important; } }
 @media (max-width: 560px) { [data-header] [href="#contact"] { display: none !important; } }
+
+[data-chat-toggle]:hover { transform: scale(1.06); }
+[data-chat-option]:hover { background: rgba(244,244,245,.1) !important; border-color: rgba(244,244,245,.4) !important; }
+[data-chat-pulse] { animation: is-chat-pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+@media (prefers-reduced-motion: reduce) { [data-chat-pulse] { animation: none !important; opacity: 0; } }
 @media (max-height: 660px), (max-width: 700px) { [data-hero-cue] { display: none !important; } }
 @media (max-width: 640px) { [data-project] { grid-template-columns: 1fr !important; gap: 10px !important; } }
 @media (max-width: 640px) { [data-photo-block] { margin: 0 auto; text-align: center; } }
