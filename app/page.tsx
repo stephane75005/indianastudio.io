@@ -344,8 +344,16 @@ export default function Home() {
                 </select>
               </label>
               <label style={{ "display": "flex", "flexDirection": "column", "gap": "7px" }}>
-                <span style={{ "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".12em", "textTransform": "uppercase", "color": "rgba(255,255,255,.72)" }}>Nom</span>
-                <input name="nom" type="text" required placeholder="Prénom et nom" style={{ "fontFamily": "inherit", "fontSize": "15px", "color": "#fff", "background": "rgba(255,255,255,.1)", "border": "1px solid rgba(255,255,255,.28)", "borderRadius": "999px", "padding": "13px 18px", "outline": "none", "transition": "border-color .25s,background .25s" }} className="x30" />
+                <span style={{ "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".12em", "textTransform": "uppercase", "color": "rgba(255,255,255,.72)" }}>Prénom Nom</span>
+                <input name="nom" type="text" required placeholder="Prénom Nom" style={{ "fontFamily": "inherit", "fontSize": "15px", "color": "#fff", "background": "rgba(255,255,255,.1)", "border": "1px solid rgba(255,255,255,.28)", "borderRadius": "999px", "padding": "13px 18px", "outline": "none", "transition": "border-color .25s,background .25s" }} className="x30" />
+              </label>
+              <label style={{ "display": "flex", "flexDirection": "column", "gap": "7px" }}>
+                <span style={{ "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".12em", "textTransform": "uppercase", "color": "rgba(255,255,255,.72)" }}>Nom de l'entreprise</span>
+                <input name="entreprise" type="text" placeholder="Indiana Studio" style={{ "fontFamily": "inherit", "fontSize": "15px", "color": "#fff", "background": "rgba(255,255,255,.1)", "border": "1px solid rgba(255,255,255,.28)", "borderRadius": "999px", "padding": "13px 18px", "outline": "none", "transition": "border-color .25s,background .25s" }} className="x30" />
+              </label>
+              <label style={{ "display": "flex", "flexDirection": "column", "gap": "7px" }}>
+                <span style={{ "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".12em", "textTransform": "uppercase", "color": "rgba(255,255,255,.72)" }}>Téléphone</span>
+                <input name="telephone" type="tel" placeholder="06 12 34 56 78" style={{ "fontFamily": "inherit", "fontSize": "15px", "color": "#fff", "background": "rgba(255,255,255,.1)", "border": "1px solid rgba(255,255,255,.28)", "borderRadius": "999px", "padding": "13px 18px", "outline": "none", "transition": "border-color .25s,background .25s" }} className="x30" />
               </label>
               <label style={{ "display": "flex", "flexDirection": "column", "gap": "7px" }}>
                 <span style={{ "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".12em", "textTransform": "uppercase", "color": "rgba(255,255,255,.72)" }}>Email</span>
