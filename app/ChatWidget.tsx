@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from 'react'
 type ChatOption = { label: string; next: string }
 type ChatNode = { bot: string; options: ChatOption[] }
 
+const WHATSAPP_URL = 'https://wa.me/33684234852?text=' + encodeURIComponent('Bonjour, je viens du site Indiana Studio.')
+
 // Arbre scripté v1 (zéro coût, zéro dépendance). Pour brancher une vraie IA plus tard :
 // remplacer `choose()` par un appel à une route /api/chat qui renvoie { bot, options }
 // au lieu de lire NODES[opt.next] — la forme des messages reste la même.
@@ -49,8 +51,10 @@ const NODES: Record<string, ChatNode> = {
     ]
   },
   contact: {
-    bot: "Parfait, je vous amène au formulaire de contact.",
+    bot: "Comment préférez-vous échanger ?",
     options: [
+      { label: 'WhatsApp', next: WHATSAPP_URL },
+      { label: 'Formulaire de contact', next: '#contact' },
       { label: '← Retour', next: 'root' }
     ]
   }
@@ -83,6 +87,10 @@ export default function ChatWidget() {
 
   const choose = (opt: ChatOption) => {
     setMessages(m => [...m, { from: 'user', text: opt.label }])
+    if (opt.next.startsWith('http')) {
+      window.open(opt.next, '_blank', 'noopener,noreferrer')
+      return
+    }
     if (opt.next.startsWith('#')) {
       setOpen(false)
       requestAnimationFrame(() => {
