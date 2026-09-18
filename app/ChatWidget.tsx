@@ -155,7 +155,7 @@ export default function ChatWidget() {
             position: 'fixed', right: '24px', bottom: '92px', zIndex: 100,
             width: 'min(340px, calc(100vw - 48px))', maxHeight: '70vh',
             display: 'flex', flexDirection: 'column',
-            background: '#232428', border: '1px solid rgba(244,244,245,.14)',
+            background: '#232428', border: '1px solid rgba(56,69,225,.55)',
             borderRadius: '20px', boxShadow: '0 26px 60px rgba(0,0,0,.5)', overflow: 'hidden'
           }}
         >
