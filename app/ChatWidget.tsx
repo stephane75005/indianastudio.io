@@ -125,6 +125,7 @@ export default function ChatWidget() {
       <button
         type="button"
         data-chat-toggle=""
+        data-float={open ? undefined : ''}
         aria-label={open ? 'Fermer le chat' : 'Ouvrir le chat'}
         aria-expanded={open}
         onClick={() => setOpen(o => !o)}
