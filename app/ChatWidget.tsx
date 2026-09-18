@@ -116,7 +116,12 @@ export default function ChatWidget() {
         {open ? (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
         ) : (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 4V5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M2 16c2.5-5 7-6 10-2 3-4 7.5-3 10 2-3-2-6.5-1.5-10 2-3.5-3.5-7.5-4-10-2Z"
+              fill="currentColor"
+            />
+          </svg>
         )}
       </button>
 
