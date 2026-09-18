@@ -22,7 +22,7 @@ const NODES: Record<string, ChatNode> = {
     ]
   },
   pricing: {
-    bot: "Le tarif dépend du périmètre : cadrage (Thunderstart), produit complet (Thunderbuild) ou agents IA (Thunderbrain). Le premier échange sert justement à cadrer un prix précis — il est gratuit et sans engagement.",
+    bot: "Chaque offre a un périmètre et un prix annoncés avant de démarrer — pas de facturation à l'heure sans visibilité. Thunderstart (cadrage), Thunderbuild (produit complet) ou Thunderbrain (agents IA) : le prix exact se cadre lors du premier échange, gratuit et sans engagement.",
     options: [
       { label: 'Voir les offres', next: '#offres' },
       { label: 'Parler à Stéphane', next: 'contact' },
@@ -30,21 +30,21 @@ const NODES: Record<string, ChatNode> = {
     ]
   },
   timeline: {
-    bot: "De quelques jours pour un cadrage à plusieurs semaines pour un produit complet — précisé dès le premier échange selon votre besoin.",
+    bot: "Quelques jours pour un cadrage (Thunderstart), plusieurs semaines pour un produit complet (Thunderbuild). Les agents IA permettent de réduire les délais d'environ 30 % par rapport à un développement classique.",
     options: [
       { label: 'Parler à Stéphane', next: 'contact' },
       { label: '← Retour', next: 'root' }
     ]
   },
   process: {
-    bot: "Un seul interlocuteur du début à la fin : cadrage, design, développement puis mise en production — sans intermédiaires ni allers-retours entre équipes.",
+    bot: "Un seul interlocuteur du cadrage à la mise en production : design, développement et IA sous la même direction. Pas de cahier des charges à traduire ni d'allers-retours entre équipes — un plan clair dès le départ.",
     options: [
       { label: 'Parler à Stéphane', next: 'contact' },
       { label: '← Retour', next: 'root' }
     ]
   },
   guarantee: {
-    bot: "Le premier échange est un audit gratuit et sans engagement, justement pour vérifier ensemble que c'est le bon fit avant de démarrer quoi que ce soit.",
+    bot: "Le premier échange est un audit gratuit et sans engagement : on évalue ensemble la faisabilité et le périmètre avant que quoi que ce soit ne soit facturé. Si ça ne correspond pas à votre besoin, aucune obligation de donner suite.",
     options: [
       { label: 'Parler à Stéphane', next: 'contact' },
       { label: '← Retour', next: 'root' }
