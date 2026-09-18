@@ -165,7 +165,7 @@ export default function ChatWidget() {
         onClick={() => setOpen(o => !o)}
         style={{
           position: 'fixed', right: '24px', bottom: '24px', zIndex: 100,
-          width: '56px', height: '56px', borderRadius: '50%', border: '0',
+          width: '56px', height: '56px', borderRadius: '50%', border: '1px solid rgba(30,31,34,.6)',
           background: '#3845e1', color: '#fff', cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 12px 30px rgba(56,69,225,.45)', transition: 'transform .25s'
