@@ -31,6 +31,9 @@ section[id] { scroll-margin-top: 100px; }
 @media (hover: none) { [data-cursor], [data-cursor-dot] { display: none !important; } }
 @media (max-width: 1080px) { [data-nav] { display: none !important; } [data-burger] { display: grid !important; } }
 @media (max-width: 560px) { [data-header] [href="#contact"] { display: none !important; } }
+
+[data-chat-toggle]:hover { transform: scale(1.06); }
+[data-chat-option]:hover { background: rgba(244,244,245,.1) !important; border-color: rgba(244,244,245,.4) !important; }
 @media (max-height: 660px), (max-width: 700px) { [data-hero-cue] { display: none !important; } }
 
 /* états :hover / :focus extraits du design (battent les styles inline) */
