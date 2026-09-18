@@ -20,8 +20,7 @@ export function initEffects() {
       if (this._onMove) window.removeEventListener('pointermove', this._onMove);
       if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
       if (this._scrubRaf) cancelAnimationFrame(this._scrubRaf);
-  
-      if (this._blobUrl) URL.revokeObjectURL(this._blobUrl);
+
       if (this._onKey) document.removeEventListener('keydown', this._onKey);
       if (this._onMq) window.removeEventListener('resize', this._onMq);
       if (this._onIonsResize) window.removeEventListener('resize', this._onIonsResize);
@@ -441,12 +440,7 @@ export function initEffects() {
         || (navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || '')));
       if (light) { v.remove(); return; }
       try {
-        const res = await fetch('/assets/hero-triangle.mp4');
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const blob = await res.blob();
-        if (!this._alive) return;
-        this._blobUrl = URL.createObjectURL(blob.type ? blob : new Blob([blob], { type: 'video/mp4' }));
-        v.src = this._blobUrl;
+        v.src = '/assets/hero-triangle.mp4';
         v.load();
         const ready = () => {
           v.pause();
