@@ -336,10 +336,9 @@ export default function Home() {
               <label style={{ "display": "flex", "flexDirection": "column", "gap": "7px" }}>
                 <span style={{ "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".12em", "textTransform": "uppercase", "color": "rgba(255,255,255,.72)" }}>Votre besoin</span>
                 <select name="offre" style={{ "fontFamily": "inherit", "fontSize": "15px", "fontWeight": "600", "color": "#fff", "backgroundColor": "rgba(255,255,255,.1)", "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.6 6 6.4 11 1.6' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")", "backgroundRepeat": "no-repeat", "backgroundPosition": "right 18px center", "backgroundSize": "12px 8px", "border": "1px solid rgba(255,255,255,.28)", "borderRadius": "999px", "padding": "13px 44px 13px 18px", "outline": "none", "appearance": "none", "transition": "border-color .25s,background .25s" }} className="x29">
-                  <option style={{ "color": "#1a1b1e" }}>Thundercheck — Audit produit et technique</option>
-                  <option style={{ "color": "#1a1b1e" }}>Thunderstart — Cadrage et prototype</option>
-                  <option style={{ "color": "#1a1b1e" }}>Thunderbuild — Conception et développement</option>
-                  <option style={{ "color": "#1a1b1e" }}>Thunderbrain — Agents IA et automatisation</option>
+                  <option style={{ "color": "#1a1b1e" }}>Thunderstart</option>
+                  <option style={{ "color": "#1a1b1e" }}>Thunderbuild</option>
+                  <option style={{ "color": "#1a1b1e" }}>Thunderbrain</option>
                   <option style={{ "color": "#1a1b1e" }}>Autre / je ne sais pas encore</option>
                 </select>
               </label>
