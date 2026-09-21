@@ -257,8 +257,8 @@ export default function ChatWidget() {
             borderRadius: '20px', boxShadow: '0 26px 60px rgba(0,0,0,.5)', overflow: 'hidden'
           }}
         >
-          <div style={{ padding: '16px 18px', borderBottom: '1px solid rgba(244,244,245,.14)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <svg viewBox="0 0 24 21" style={{ width: '13px', height: '11px', flex: 'none' }}><path d="M12 0 24 21H0Z" fill="#3845e1" /></svg>
+          <div style={{ padding: '16px 18px', borderBottom: '1px solid rgba(244,244,245,.14)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+            <svg viewBox="0 0 24 21" style={{ width: '13px', height: '11px', flex: 'none', marginTop: '3px' }}><path d="M12 0 24 21H0Z" fill="#3845e1" /></svg>
             <div>
               <p style={{ margin: 0, fontSize: '13px', fontWeight: 800, color: '#f4f4f5' }}>Assistant Indiana Studio</p>
               <p style={{ margin: 0, fontSize: '11px', color: 'rgba(244,244,245,.5)', display: 'flex', alignItems: 'center', gap: '6px' }}>
