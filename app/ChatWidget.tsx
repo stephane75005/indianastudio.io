@@ -13,7 +13,7 @@ const MAX_AI_MESSAGES_PER_SESSION = 12
 // au lieu de lire NODES[opt.next] — la forme des messages reste la même.
 const NODES: Record<string, ChatNode> = {
   root: {
-    bot: "Bonjour ! Posez-moi une question directement, ou choisissez un sujet ci-dessous.",
+    bot: "Bonjour ! Posez-moi votre question directement, ou discutez avec Stéphane si vous préférez.",
     options: [
       { label: 'Combien ça coûte ?', next: 'pricing' },
       { label: 'Combien de temps ça prend ?', next: 'timeline' },
@@ -193,6 +193,7 @@ export default function ChatWidget() {
   }
 
   const current = NODES[nodeId]
+  const hideFaqShortcuts = !aiDown && nodeId === 'root'
 
   return (
     <>
@@ -319,24 +320,42 @@ export default function ChatWidget() {
           )}
 
           <div style={{ padding: '12px 14px', borderTop: '1px solid rgba(244,244,245,.14)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {current.options.map(opt => (
-              <button
-                key={opt.label}
-                type="button"
-                data-chat-option=""
-                disabled={sending}
-                onClick={() => choose(opt)}
-                style={{
-                  textAlign: 'left', padding: '10px 14px', borderRadius: '12px',
-                  border: '1px solid rgba(244,244,245,.2)', background: 'rgba(244,244,245,.04)',
-                  color: '#f4f4f5', fontSize: '13px', fontWeight: 600, cursor: sending ? 'default' : 'pointer',
-                  opacity: sending ? 0.5 : 1,
-                  transition: 'background .2s,border-color .2s'
-                }}
-              >
-                {opt.label}
-              </button>
-            ))}
+            {current.options
+              .filter(opt => !hideFaqShortcuts || opt.next === 'contact')
+              .map(opt => {
+                const isContact = opt.next === 'contact'
+                return (
+                  <button
+                    key={opt.label}
+                    type="button"
+                    data-chat-option=""
+                    disabled={sending}
+                    onClick={() => choose(opt)}
+                    style={isContact ? {
+                      textAlign: 'left', padding: '10px 14px', borderRadius: '12px',
+                      border: '1px solid rgba(56,69,225,.6)', background: '#3845e1',
+                      color: '#fff', fontSize: '13px', fontWeight: 700, cursor: sending ? 'default' : 'pointer',
+                      opacity: sending ? 0.5 : 1,
+                      display: 'flex', alignItems: 'center', gap: '8px',
+                      transition: 'background .2s,border-color .2s'
+                    } : {
+                      textAlign: 'left', padding: '10px 14px', borderRadius: '12px',
+                      border: '1px solid rgba(244,244,245,.2)', background: 'rgba(244,244,245,.04)',
+                      color: '#f4f4f5', fontSize: '13px', fontWeight: 600, cursor: sending ? 'default' : 'pointer',
+                      opacity: sending ? 0.5 : 1,
+                      transition: 'background .2s,border-color .2s'
+                    }}
+                  >
+                    {isContact && (
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ flex: 'none' }}>
+                        <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="2" />
+                        <path d="M4.5 20c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    )}
+                    {opt.label}
+                  </button>
+                )
+              })}
           </div>
         </div>
       )}
