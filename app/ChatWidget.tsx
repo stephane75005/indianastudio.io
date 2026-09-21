@@ -12,7 +12,7 @@ const WHATSAPP_NUMBER = '33684234852'
 // au lieu de lire NODES[opt.next] — la forme des messages reste la même.
 const NODES: Record<string, ChatNode> = {
   root: {
-    bot: "Bonjour ! Je peux répondre à quelques questions fréquentes, ou vous mettre en contact directement avec Stéphane.",
+    bot: "Bonjour ! Posez-moi une question directement, ou choisissez un sujet ci-dessous.",
     options: [
       { label: 'Combien ça coûte ?', next: 'pricing' },
       { label: 'Combien de temps ça prend ?', next: 'timeline' },
@@ -60,7 +60,19 @@ const NODES: Record<string, ChatNode> = {
   }
 }
 
-type Message = { from: 'bot' | 'user'; text: string }
+type Message = { from: 'bot' | 'user'; text: string; pending?: boolean }
+
+function getSessionId() {
+  try {
+    const existing = sessionStorage.getItem('is-chat-session')
+    if (existing) return existing
+    const id = crypto.randomUUID()
+    sessionStorage.setItem('is-chat-session', id)
+    return id
+  } catch {
+    return crypto.randomUUID()
+  }
+}
 
 function isStephaneAvailable() {
   const parts = new Intl.DateTimeFormat('en-US', {
@@ -87,10 +99,14 @@ export default function ChatWidget() {
   const [nodeId, setNodeId] = useState('root')
   const [messages, setMessages] = useState<Message[]>([])
   const [available, setAvailable] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const [sending, setSending] = useState(false)
+  const sessionIdRef = useRef('')
   const threadRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setAvailable(isStephaneAvailable())
+    sessionIdRef.current = getSessionId()
   }, [])
 
   useEffect(() => {
@@ -127,6 +143,34 @@ export default function ChatWidget() {
     const node = NODES[opt.next]
     setNodeId(opt.next)
     setMessages(m => [...m, { from: 'bot', text: node.bot }])
+  }
+
+  const sendFreeText = async (raw: string) => {
+    const text = raw.trim()
+    if (!text || sending) return
+    setInputValue('')
+    setMessages(m => [...m, { from: 'user', text }, { from: 'bot', text: '···', pending: true }])
+    setSending(true)
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId: sessionIdRef.current, message: text })
+      })
+      const data = await res.json()
+      const reply = res.ok ? data.reply : data.error
+      setMessages(m => {
+        const next = m.slice(0, -1)
+        return [...next, { from: 'bot', text: reply || "Je n'ai pas pu obtenir de réponse. Réessayez, ou choisissez « Discuter avec Stéphane »." }]
+      })
+    } catch {
+      setMessages(m => {
+        const next = m.slice(0, -1)
+        return [...next, { from: 'bot', text: "Je n'ai pas pu joindre l'assistant IA. Réessayez, ou choisissez « Discuter avec Stéphane »." }]
+      })
+    } finally {
+      setSending(false)
+    }
   }
 
   const current = NODES[nodeId]
@@ -206,7 +250,7 @@ export default function ChatWidget() {
 
           <div ref={threadRef} aria-live="polite" style={{ flex: 1, overflowY: 'auto', padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {messages.map((m, i) => (
-              <div key={i} style={{
+              <div key={i} data-chat-pending={m.pending ? '' : undefined} style={{
                 alignSelf: m.from === 'bot' ? 'flex-start' : 'flex-end',
                 maxWidth: '85%', padding: '10px 14px', borderRadius: '14px',
                 fontSize: '13.5px', lineHeight: 1.4,
@@ -218,17 +262,50 @@ export default function ChatWidget() {
             ))}
           </div>
 
+          <form
+            onSubmit={e => { e.preventDefault(); sendFreeText(inputValue) }}
+            style={{ padding: '12px 14px 0', display: 'flex', gap: '8px' }}
+          >
+            <input
+              type="text"
+              value={inputValue}
+              onChange={e => setInputValue(e.target.value)}
+              disabled={sending}
+              placeholder="Posez votre question…"
+              style={{
+                flex: 1, minWidth: 0, padding: '10px 14px', borderRadius: '999px',
+                border: '1px solid rgba(244,244,245,.2)', background: 'rgba(244,244,245,.06)',
+                color: '#f4f4f5', fontSize: '13px', outline: 'none'
+              }}
+            />
+            <button
+              type="submit"
+              disabled={sending || !inputValue.trim()}
+              aria-label="Envoyer"
+              style={{
+                flex: 'none', width: '38px', height: '38px', borderRadius: '50%', border: '0',
+                background: '#3845e1', color: '#fff', cursor: sending ? 'default' : 'pointer',
+                opacity: sending || !inputValue.trim() ? 0.5 : 1,
+                display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
+          </form>
+
           <div style={{ padding: '12px 14px', borderTop: '1px solid rgba(244,244,245,.14)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {current.options.map(opt => (
               <button
                 key={opt.label}
                 type="button"
                 data-chat-option=""
+                disabled={sending}
                 onClick={() => choose(opt)}
                 style={{
                   textAlign: 'left', padding: '10px 14px', borderRadius: '12px',
                   border: '1px solid rgba(244,244,245,.2)', background: 'rgba(244,244,245,.04)',
-                  color: '#f4f4f5', fontSize: '13px', fontWeight: 600, cursor: 'pointer',
+                  color: '#f4f4f5', fontSize: '13px', fontWeight: 600, cursor: sending ? 'default' : 'pointer',
+                  opacity: sending ? 0.5 : 1,
                   transition: 'background .2s,border-color .2s'
                 }}
               >
