@@ -127,7 +127,7 @@ export default function Home() {
               <ul style={{ "margin": "20px 0 0", "padding": "0", "listStyle": "none", "display": "flex", "flexDirection": "column", "gap": "9px", "fontSize": "13.5px", "color": "rgba(244,244,245,.72)" }}>
                 <li style={{ "display": "flex", "gap": "10px" }}><span style={{ "color": "#3845e1" }}>→</span>Orchestration multi-agents</li>
                 <li style={{ "display": "flex", "gap": "10px" }}><span style={{ "color": "#3845e1" }}>→</span>RAG sur vos données métier</li>
-                <li style={{ "display": "flex", "gap": "10px" }}><span style={{ "color": "#3845e1" }}>→</span>Jusqu'à −30 % sur les délais de production</li>
+                <li style={{ "display": "flex", "gap": "10px" }}><span style={{ "color": "#3845e1" }}>→</span>Automatisations n8n actives 24/7</li>
               </ul>
             </div>
           </div>
