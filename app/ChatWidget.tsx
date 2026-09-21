@@ -348,8 +348,7 @@ export default function ChatWidget() {
                   >
                     {isContact && (
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ flex: 'none' }}>
-                        <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="2" />
-                        <path d="M4.5 20c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M4 5h16v11H8l-4 4V5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
                       </svg>
                     )}
                     {opt.label}
