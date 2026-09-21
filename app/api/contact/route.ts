@@ -29,8 +29,8 @@ export async function POST(request: Request) {
   const offre = clean(data.get('offre'), 120);
   const message = String(data.get('message') ?? '').trim().slice(0, 4000);
 
-  if (!nom || !message || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    return bad('Merci de renseigner votre nom, un email valide et votre projet.', 422);
+  if (!nom || !entreprise || !telephone || !message || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    return bad('Merci de renseigner votre nom, votre entreprise, votre téléphone, un email valide et votre projet.', 422);
   }
 
   if (!process.env.RESEND_API_KEY) {
