@@ -378,7 +378,7 @@ export default function Home() {
             <div style={{ "display": "flex", "alignItems": "center", "gap": "10px" }}>
               <span style={{ "display": "flex", "alignItems": "center", "gap": "9px", "color": "#fff", "background": "linear-gradient(115deg,#ffffff 0%,#ffffff 34%,#ffffff 46%,#8f9bff 51%,#ffffff 58%,#ffffff 100%)", "backgroundSize": "320% 100%", "backgroundPosition": "100% 0", "WebkitBackgroundClip": "text", "backgroundClip": "text", "transition": "background-position .9s cubic-bezier(.16,1,.3,1)" }} className="x34"><svg viewBox="0 0 24 21" style={{ "width": "13px", "height": "11.375px", "flex": "none", "display": "block" }}><path d="M12 0 24 21H0Z" fill="#3845e1" /></svg><span style={{ "fontWeight": "800", "fontSize": "13px", "letterSpacing": ".06em", "textTransform": "uppercase", "whiteSpace": "nowrap", "WebkitTextFillColor": "transparent" }}>Indiana <span style={{ "fontWeight": "300", "letterSpacing": ".1em" }}>Studio</span></span></span>
             </div>
-            <span>Design × Code × IA · Paris</span>
+            <span>Design <span style={{ "color": "#3845e1" }}>×</span> Code <span style={{ "color": "#3845e1" }}>×</span> IA · Paris</span>
             <span>© 2026 Indiana Studio — indianastudio.io</span>
           </div>
         </footer>
