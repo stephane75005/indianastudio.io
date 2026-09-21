@@ -328,7 +328,7 @@ export default function Home() {
                 </span>
               </span>
               <h2 style={{ "fontSize": "clamp(32px,4.4vw,62px)", "fontWeight": "800", "lineHeight": ".98", "letterSpacing": "-.035em", "margin": "0", "maxWidth": "20ch" }}>Parlons de votre prochain projet.</h2>
-              <p style={{ "margin": "24px 0 0", "fontSize": "16.5px", "color": "rgba(255,255,255,.82)", "maxWidth": "44ch" }}>Décrivez votre besoin en quelques lignes : vous recevez une réponse construite, avec un premier avis et les prochaines étapes. Audit gratuit et sans engagement.</p>
+              <p style={{ "margin": "24px 0 0", "fontSize": "16.5px", "color": "rgba(255,255,255,.82)", "maxWidth": "44ch" }}>Décrivez votre besoin en quelques lignes : utilisez le formulaire ou échangez avec notre chatbot IA. Audit gratuit et sans engagement.</p>
             </div>
             <div style={{ "display": "flex", "flexDirection": "column", "gap": "18px" }}>
               <form data-contact-form="" style={{ "display": "flex", "flexDirection": "column", "gap": "14px" }}>
