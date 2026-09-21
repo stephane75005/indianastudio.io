@@ -6,6 +6,7 @@ type ChatOption = { label: string; next: string }
 type ChatNode = { bot: string; options: ChatOption[] }
 
 const WHATSAPP_NUMBER = '33684234852'
+const MAX_AI_MESSAGES_PER_SESSION = 12
 
 // Arbre scripté v1 (zéro coût, zéro dépendance). Pour brancher une vraie IA plus tard :
 // remplacer `choose()` par un appel à une route /api/chat qui renvoie { bot, options }
@@ -101,7 +102,9 @@ export default function ChatWidget() {
   const [available, setAvailable] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const [sending, setSending] = useState(false)
+  const [aiDown, setAiDown] = useState(false)
   const sessionIdRef = useRef('')
+  const aiMessageCountRef = useRef(0)
   const threadRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -147,7 +150,21 @@ export default function ChatWidget() {
 
   const sendFreeText = async (raw: string) => {
     const text = raw.trim()
-    if (!text || sending) return
+    if (!text || sending || aiDown) return
+
+    if (aiMessageCountRef.current >= MAX_AI_MESSAGES_PER_SESSION) {
+      setAiDown(true)
+      setNodeId('root')
+      setMessages(m => [...m,
+        { from: 'user', text },
+        { from: 'bot', text: "Vous avez atteint la limite de questions pour cette session. Je repasse sur les réponses rapides ci-dessous, ou contactez Stéphane directement." },
+        { from: 'bot', text: NODES.root.bot }
+      ])
+      setInputValue('')
+      return
+    }
+
+    aiMessageCountRef.current += 1
     setInputValue('')
     setMessages(m => [...m, { from: 'user', text }, { from: 'bot', text: '···', pending: true }])
     setSending(true)
@@ -158,15 +175,17 @@ export default function ChatWidget() {
         body: JSON.stringify({ sessionId: sessionIdRef.current, message: text })
       })
       const data = await res.json()
-      const reply = res.ok ? data.reply : data.error
+      if (!res.ok) throw new Error(data.error || 'AI unavailable')
       setMessages(m => {
         const next = m.slice(0, -1)
-        return [...next, { from: 'bot', text: reply || "Je n'ai pas pu obtenir de réponse. Réessayez, ou choisissez « Discuter avec Stéphane »." }]
+        return [...next, { from: 'bot', text: data.reply }]
       })
     } catch {
+      setAiDown(true)
+      setNodeId('root')
       setMessages(m => {
         const next = m.slice(0, -1)
-        return [...next, { from: 'bot', text: "Je n'ai pas pu joindre l'assistant IA. Réessayez, ou choisissez « Discuter avec Stéphane »." }]
+        return [...next, { from: 'bot', text: "L'assistant IA est momentanément indisponible — je repasse sur les réponses rapides ci-dessous." }, { from: 'bot', text: NODES.root.bot }]
       })
     } finally {
       setSending(false)
@@ -262,36 +281,42 @@ export default function ChatWidget() {
             ))}
           </div>
 
-          <form
-            onSubmit={e => { e.preventDefault(); sendFreeText(inputValue) }}
-            style={{ padding: '12px 14px 0', display: 'flex', gap: '8px' }}
-          >
-            <input
-              type="text"
-              value={inputValue}
-              onChange={e => setInputValue(e.target.value)}
-              disabled={sending}
-              placeholder="Posez votre question…"
-              style={{
-                flex: 1, minWidth: 0, padding: '10px 14px', borderRadius: '999px',
-                border: '1px solid rgba(244,244,245,.2)', background: 'rgba(244,244,245,.06)',
-                color: '#f4f4f5', fontSize: '13px', outline: 'none'
-              }}
-            />
-            <button
-              type="submit"
-              disabled={sending || !inputValue.trim()}
-              aria-label="Envoyer"
-              style={{
-                flex: 'none', width: '38px', height: '38px', borderRadius: '50%', border: '0',
-                background: '#3845e1', color: '#fff', cursor: sending ? 'default' : 'pointer',
-                opacity: sending || !inputValue.trim() ? 0.5 : 1,
-                display: 'flex', alignItems: 'center', justifyContent: 'center'
-              }}
+          {aiDown ? (
+            <p style={{ margin: 0, padding: '12px 18px 0', fontSize: '11.5px', color: 'rgba(244,244,245,.45)' }}>
+              Assistant IA indisponible pour le moment · réponses rapides ci-dessous
+            </p>
+          ) : (
+            <form
+              onSubmit={e => { e.preventDefault(); sendFreeText(inputValue) }}
+              style={{ padding: '12px 14px 0', display: 'flex', gap: '8px' }}
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </button>
-          </form>
+              <input
+                type="text"
+                value={inputValue}
+                onChange={e => setInputValue(e.target.value)}
+                disabled={sending}
+                placeholder="Posez votre question…"
+                style={{
+                  flex: 1, minWidth: 0, padding: '10px 14px', borderRadius: '999px',
+                  border: '1px solid rgba(244,244,245,.2)', background: 'rgba(244,244,245,.06)',
+                  color: '#f4f4f5', fontSize: '13px', outline: 'none'
+                }}
+              />
+              <button
+                type="submit"
+                disabled={sending || !inputValue.trim()}
+                aria-label="Envoyer"
+                style={{
+                  flex: 'none', width: '38px', height: '38px', borderRadius: '50%', border: '0',
+                  background: '#3845e1', color: '#fff', cursor: sending ? 'default' : 'pointer',
+                  opacity: sending || !inputValue.trim() ? 0.5 : 1,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </button>
+            </form>
+          )}
 
           <div style={{ padding: '12px 14px', borderTop: '1px solid rgba(244,244,245,.14)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {current.options.map(opt => (
