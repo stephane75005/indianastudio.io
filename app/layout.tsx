@@ -5,9 +5,9 @@ const url = 'https://indianastudio.io';
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
-  title: 'Indiana Studio — Développeur Next.js & Product Builder à Paris',
+  title: 'Développeur Next.js & Agents IA à Paris — Indiana Studio',
   description:
-    "Studio de conception et développement de produits digitaux à Paris. Next.js, React, Supabase et agents IA — de l'idée au déploiement. 18 ans d'expérience, 60+ clients.",
+    "Développeur Next.js à Paris : conception, développement et agents IA, de l'idée au déploiement. 18 ans d'expérience, 60+ clients accompagnés.",
   keywords: ['développeur Next.js Paris', 'product builder', 'développeur full-stack freelance', 'agents IA', 'SaaS', 'React', 'Supabase'],
   authors: [{ name: 'Stéphane Aboukrat', url }],
   creator: 'Stéphane Aboukrat',
