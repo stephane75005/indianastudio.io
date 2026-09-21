@@ -238,7 +238,7 @@ export default function Home() {
 
         <section id="offres" style={{ "position": "relative", "zIndex": "1", "maxWidth": "1320px", "margin": "0 auto", "padding": "110px 28px 0", "boxSizing": "border-box" }}>
           <div data-reveal="" style={{ "display": "flex", "alignItems": "baseline", "gap": "14px", "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".16em", "textTransform": "uppercase", "marginBottom": "30px" }}>
-            <span style={{ "color": "#3845e1" }}>04 / 05</span><span style={{ "color": "rgba(244,244,245,.45)" }}>Les offres</span>
+            <span style={{ "color": "#3845e1" }}>04 / 05</span><span style={{ "color": "rgba(244,244,245,.45)" }}>Les offres ThunderBird</span>
           </div>
           <h2 data-reveal="" data-reveal-lines="" style={{ "fontSize": "clamp(30px,3.9vw,54px)", "fontWeight": "800", "lineHeight": "1.02", "letterSpacing": "-.03em", "margin": "0", "maxWidth": "24ch" }}>Trois façons de <span style={{ "color": "#3845e1" }}>démarrer</span>, selon où vous en êtes.</h2>
           <p data-reveal="" style={{ "maxWidth": "60ch", "color": "rgba(244,244,245,.62)", "margin": "24px 0 0", "fontSize": "16px" }}>Du cadrage d'une idée à la plateforme complète, avec un prix et un périmètre annoncés avant de commencer.</p>
