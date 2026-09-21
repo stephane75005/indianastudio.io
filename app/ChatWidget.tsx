@@ -13,7 +13,7 @@ const MAX_AI_MESSAGES_PER_SESSION = 12
 // au lieu de lire NODES[opt.next] — la forme des messages reste la même.
 const NODES: Record<string, ChatNode> = {
   root: {
-    bot: "Bonjour ! Posez-moi votre question directement, ou discutez avec Stéphane si vous préférez.",
+    bot: "Bonjour ! Posez-moi votre question directement, ou échangez avec Stéphane s'il est disponible. C'est vous qui choisissez.",
     options: [
       { label: 'Combien ça coûte ?', next: 'pricing' },
       { label: 'Combien de temps ça prend ?', next: 'timeline' },
