@@ -23,7 +23,7 @@ const NODES: Record<string, ChatNode> = {
     ]
   },
   pricing: {
-    bot: "Chaque offre a un périmètre et un prix annoncés avant de démarrer — pas de facturation à l'heure sans visibilité. Thunderstart (cadrage), Thunderbuild (produit complet) ou Thunderbrain (agents IA) : le prix exact se cadre lors du premier échange, gratuit et sans engagement.",
+    bot: "Chaque offre a un périmètre et un prix annoncés avant de démarrer — pas de facturation à l'heure sans visibilité. ThunderStart (cadrage), ThunderBuild (produit complet) ou ThunderBrain (agents IA) : le prix exact se cadre lors du premier échange, gratuit et sans engagement.",
     options: [
       { label: 'Voir les offres', next: '#offres' },
       { label: 'Discuter avec Stéphane', next: 'contact' },
@@ -31,7 +31,7 @@ const NODES: Record<string, ChatNode> = {
     ]
   },
   timeline: {
-    bot: "Quelques jours pour un cadrage (Thunderstart), plusieurs semaines pour un produit complet (Thunderbuild). Les agents IA permettent de réduire les délais d'environ 30 % par rapport à un développement classique.",
+    bot: "Quelques jours pour un cadrage (ThunderStart), plusieurs semaines pour un produit complet (ThunderBuild). Les agents IA permettent de réduire les délais d'environ 30 % par rapport à un développement classique.",
     options: [
       { label: 'Discuter avec Stéphane', next: 'contact' },
       { label: '← Retour', next: 'root' }
