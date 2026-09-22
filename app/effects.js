@@ -79,7 +79,7 @@ export function initEffects() {
         ring.style.borderColor = big ? 'rgba(143,155,255,.95)' : 'rgba(143,155,255,.7)';
         dot.style.opacity = big ? '0' : '1';
         if (glow) {
-          glow.style.opacity = '1';
+          glow.style.opacity = big ? '1' : '0';
           glow.style.filter = big ? 'blur(1.4px)' : 'blur(.3px)';
         }
       };
