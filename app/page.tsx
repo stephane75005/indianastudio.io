@@ -306,7 +306,7 @@ export default function Home() {
                 <canvas data-photo-ions="" aria-hidden="true" style={{ "position": "absolute", "top": "-52px", "left": "-46px", "width": "calc(100% + 92px)", "height": "calc(100% + 104px)", "zIndex": "0", "pointerEvents": "none" }}></canvas>
                 <div aria-hidden="true" style={{ "position": "absolute", "top": "11px", "left": "11px", "right": "-11px", "bottom": "-11px", "background": "#3845e1", "opacity": ".5", "borderRadius": "6px", "zIndex": "1" }}></div>
                 <div style={{ "position": "relative", "zIndex": "2", "aspectRatio": "4/5", "width": "100%", "overflow": "hidden", "background": "#232428", "border": "1px solid rgba(244,244,245,.14)", "borderRadius": "6px", "boxShadow": "0 20px 40px -14px rgba(0,0,0,.55)" }}>
-                  <img src="/assets/photo-stephane.png" alt="Portrait de Stéphane Aboukrat" width="180" height="225" loading="lazy" decoding="async" style={{ "width": "100%", "height": "100%", "objectFit": "cover", "objectPosition": "50% 22%", "display": "block" }} />
+                  <img src="/assets/photo-stephane-2026.png" alt="Portrait de Stéphane Aboukrat" width="180" height="225" loading="lazy" decoding="async" style={{ "width": "100%", "height": "100%", "objectFit": "cover", "objectPosition": "50% 22%", "display": "block" }} />
                 </div>
               </div>
               <p style={{ "margin": "28px 0 0", "fontSize": "12.5px", "fontWeight": "800", "letterSpacing": ".01em", "whiteSpace": "nowrap" }}>Stéphane ABOUKRAT</p>
