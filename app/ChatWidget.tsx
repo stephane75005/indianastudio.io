@@ -65,6 +65,30 @@ const NODES: Record<string, ChatNode> = {
 
 type Message = { from: 'bot' | 'user'; text: string; pending?: boolean }
 
+const OFF_TOPIC_BLOCK_KEY = 'is-chat-offtopic-block'
+const OFF_TOPIC_BLOCK_MS = 24 * 60 * 60 * 1000
+
+function isOffTopicBlockActive() {
+  try {
+    const raw = localStorage.getItem(OFF_TOPIC_BLOCK_KEY)
+    if (!raw) return false
+    const { blockedAt } = JSON.parse(raw)
+    if (Date.now() - blockedAt < OFF_TOPIC_BLOCK_MS) return true
+    localStorage.removeItem(OFF_TOPIC_BLOCK_KEY)
+    return false
+  } catch {
+    return false
+  }
+}
+
+function setOffTopicBlock() {
+  try {
+    localStorage.setItem(OFF_TOPIC_BLOCK_KEY, JSON.stringify({ blockedAt: Date.now() }))
+  } catch {
+    // localStorage indisponible (navigation privée...) — le blocage reste actif pour la session en cours seulement
+  }
+}
+
 function getSessionId() {
   try {
     const existing = sessionStorage.getItem('is-chat-session')
@@ -113,6 +137,7 @@ export default function ChatWidget() {
   useEffect(() => {
     setAvailable(isStephaneAvailable())
     sessionIdRef.current = getSessionId()
+    if (isOffTopicBlockActive()) setAiDown(true)
   }, [])
 
   useEffect(() => {
@@ -185,6 +210,7 @@ export default function ChatWidget() {
 
       if (isOffTopic && offTopicCountRef.current >= MAX_OFF_TOPIC) {
         setAiDown(true)
+        setOffTopicBlock()
         setNodeId('root')
         setMessages(m => {
           const next = m.slice(0, -1)
