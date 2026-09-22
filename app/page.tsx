@@ -221,6 +221,8 @@ export default function Home() {
                   <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>JWT / OAuth</span>
                   <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>Stripe</span>
                   <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>n8n</span>
+                  <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>Resend</span>
+                  <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>SQL</span>
                   <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>Docker</span>
                   <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>Vercel</span>
                   <span style={{ "background": "rgba(244,244,245,.07)", "fontSize": "12px", "fontWeight": "600", "padding": "6px 13px", "borderRadius": "999px" }}>GitHub</span>
