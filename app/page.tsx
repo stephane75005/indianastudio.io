@@ -61,6 +61,9 @@ export default function Home() {
             <h1 data-reveal="" data-reveal-lines="" style={{ "fontSize": "clamp(34px,4.9vw,72px)", "fontWeight": "800", "lineHeight": ".98", "letterSpacing": "-.035em", "margin": "0", "maxWidth": "22ch" }}>
               Je conçois, développe et déploie des produits digitaux de bout en bout.
             </h1>
+            <h2 data-reveal="" style={{ "fontSize": "clamp(16px,1.5vw,22px)", "fontWeight": "600", "lineHeight": "1.25", "letterSpacing": "-.015em", "color": "#f4f4f5", "margin": "20px 0 0", "maxWidth": "48ch" }}>
+              L'innovation donne des ailes à ceux qui <span style={{ "color": "#3845e1" }}>osent avancer</span>.
+            </h2>
             <p data-reveal="" style={{ "maxWidth": "56ch", "color": "rgba(244,244,245,.72)", "fontSize": "clamp(14.5px,1.2vw,17px)", "margin": "22px 0 0" }}>
               Design, développement et IA réunis sous une même direction : vous parlez à celui qui imagine, code et met en ligne, sans aucune friction.
             </p>
