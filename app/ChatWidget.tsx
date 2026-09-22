@@ -7,6 +7,8 @@ type ChatNode = { bot: string; options: ChatOption[] }
 
 const WHATSAPP_NUMBER = '33684234852'
 const MAX_AI_MESSAGES_PER_SESSION = 12
+const OFF_TOPIC_TAG = '[HORS-SUJET]'
+const MAX_OFF_TOPIC = 3
 
 // Arbre scripté v1 (zéro coût, zéro dépendance). Pour brancher une vraie IA plus tard :
 // remplacer `choose()` par un appel à une route /api/chat qui renvoie { bot, options }
@@ -105,6 +107,7 @@ export default function ChatWidget() {
   const [aiDown, setAiDown] = useState(false)
   const sessionIdRef = useRef('')
   const aiMessageCountRef = useRef(0)
+  const offTopicCountRef = useRef(0)
   const threadRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -176,9 +179,27 @@ export default function ChatWidget() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'AI unavailable')
+
+      const isOffTopic = typeof data.reply === 'string' && data.reply.startsWith(OFF_TOPIC_TAG)
+      if (isOffTopic) offTopicCountRef.current += 1
+
+      if (isOffTopic && offTopicCountRef.current >= MAX_OFF_TOPIC) {
+        setAiDown(true)
+        setNodeId('root')
+        setMessages(m => {
+          const next = m.slice(0, -1)
+          return [...next,
+            { from: 'bot', text: "Je suis là pour vous aider sur les services d'Indiana Studio — pour toute autre question, contactez Stéphane directement. Je repasse sur les réponses rapides ci-dessous." },
+            { from: 'bot', text: NODES.root.bot }
+          ]
+        })
+        return
+      }
+
+      const reply = isOffTopic ? data.reply.slice(OFF_TOPIC_TAG.length).trim() : data.reply
       setMessages(m => {
         const next = m.slice(0, -1)
-        return [...next, { from: 'bot', text: data.reply }]
+        return [...next, { from: 'bot', text: reply }]
       })
     } catch {
       setAiDown(true)
