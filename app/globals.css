@@ -8,7 +8,7 @@ body {
   font-family: Archivo, system-ui, sans-serif; font-size: 15px; line-height: 1.55;
   overflow-x: clip; -webkit-font-smoothing: antialiased;
 }
-p { text-align: justify; hyphens: auto; }
+p { text-align: justify; }
 a { color: #8f9bff; text-decoration: none; }
 a:hover { color: #fff; }
 ::selection { background: #3845e1; color: #fff; }
