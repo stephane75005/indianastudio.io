@@ -6,7 +6,7 @@ type ChatOption = { label: string; next: string }
 type ChatNode = { bot: string; options: ChatOption[] }
 
 const WHATSAPP_NUMBER = '33684234852'
-const MAX_AI_MESSAGES_PER_SESSION = 12
+const MAX_AI_MESSAGES_PER_SESSION = 15
 const OFF_TOPIC_TAG = '[HORS-SUJET]'
 const MAX_OFF_TOPIC = 3
 
