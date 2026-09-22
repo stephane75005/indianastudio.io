@@ -45,6 +45,7 @@ section[id] { scroll-margin-top: 100px; }
 @media (max-width: 640px) { [data-project] { grid-template-columns: 1fr !important; gap: 10px !important; } }
 @media (max-width: 640px) { [data-photo-block] { margin: 0 auto; text-align: center; } }
 @media (min-width: 641px) { [data-nowrap-desktop] { white-space: nowrap; max-width: none; } }
+@media (max-width: 640px) { [data-desktop-break] { display: none; } }
 
 /* états :hover / :focus extraits du design (battent les styles inline) */
 .x1:hover { background-position:0 0 !important }
@@ -105,6 +106,7 @@ html { scroll-behavior: smooth; }
 @media (max-width: 640px) { [data-project] { grid-template-columns: 1fr !important; gap: 10px !important; } }
 @media (max-width: 640px) { [data-photo-block] { margin: 0 auto; text-align: center; } }
 @media (min-width: 641px) { [data-nowrap-desktop] { white-space: nowrap; max-width: none; } }
+@media (max-width: 640px) { [data-desktop-break] { display: none; } }
 
 /* états :hover / :focus extraits du design (battent les styles inline) */
 .x1:hover { background-position:0 0 !important }
