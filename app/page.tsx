@@ -161,7 +161,7 @@ export default function Home() {
                   <span style={{ "border": "1px solid rgba(244,244,245,.25)", "fontSize": "11px", "fontWeight": "700", "letterSpacing": ".06em", "textTransform": "uppercase", "padding": "5px 11px", "borderRadius": "999px", "color": "rgba(244,244,245,.75)" }}>Stripe</span>
                 </div>
               </div>
-              <p style={{ "margin": "0", "color": "rgba(244,244,245,.62)", "fontSize": "15px" }}>Réservation, géolocalisation, suivi des prestations, paiements sécurisés en escrow et espace client. Deux faces de marché à équilibrer dans une seule interface.</p>
+              <p style={{ "margin": "0", "color": "rgba(244,244,245,.62)", "fontSize": "15px" }}>Réservation, géolocalisation, suivi des prestations, paiements sécurisés et espace client. Deux faces de marché à équilibrer dans une seule interface.</p>
             </article>
             <article data-reveal="" data-reveal-x="" data-project="" style={{ "display": "grid", "gridTemplateColumns": "minmax(0,118px) minmax(0,1fr) minmax(0,1.2fr)", "gap": "28px", "alignItems": "start", "padding": "38px 8px", "borderBottom": "1px solid rgba(244,244,245,.14)", "transition": "background .3s" }} className="x21">
               <p style={{ "margin": "0", "fontSize": "clamp(40px,4.4vw,60px)", "fontWeight": "800", "letterSpacing": "-.04em", "lineHeight": ".85", "color": "rgba(244,244,245,.3)" }}>02</p>
