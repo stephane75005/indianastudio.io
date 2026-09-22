@@ -62,7 +62,7 @@ export default function Home() {
               L'innovation donne des ailes à ceux qui <span style={{ "color": "#3845e1" }}>osent avancer</span>.
             </h1>
             <h2 data-reveal="" style={{ "fontSize": "clamp(16px,1.5vw,22px)", "fontWeight": "600", "lineHeight": "1.25", "letterSpacing": "-.015em", "color": "#f4f4f5", "margin": "20px 0 0", "maxWidth": "48ch" }}>
-              Je conçois, développe, automatise et déploie des produits digitaux<br />de bout en bout.
+              Je conçois, développe, automatise et déploie des produits digitaux<br data-desktop-break="" />de bout en bout.
             </h2>
             <p data-reveal="" style={{ "maxWidth": "56ch", "color": "rgba(244,244,245,.72)", "fontSize": "clamp(14.5px,1.2vw,17px)", "margin": "22px 0 0" }}>
               Design, développement et IA réunis sous une même direction : vous parlez à celui qui imagine, code et met en ligne, sans aucune friction.
