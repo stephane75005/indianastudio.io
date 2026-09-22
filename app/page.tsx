@@ -113,7 +113,7 @@ export default function Home() {
             <div data-reveal="" data-reveal-x="" style={{ "background": "#2b2c2e", "boxShadow": "0 0 0 1px rgba(244,244,245,.14)", "padding": "36px 30px 40px", "transition": "background .3s" }} className="x18">
               <p style={{ "margin": "0", "fontSize": "14px", "fontWeight": "800", "letterSpacing": ".12em", "color": "#3845e1" }}>02 — Code</p>
               <h3 style={{ "margin": "16px 0 0", "fontSize": "24px", "fontWeight": "800", "letterSpacing": "-.02em", "lineHeight": "1.1" }}>Un produit sur mesure, du front au déploiement</h3>
-              <p style={{ "margin": "14px 0 0", "color": "rgba(244,244,245,.58)", "fontSize": "14.5px", "textAlign": "left" }}>Next.js, React, TypeScript, Node.js, PostgreSQL, Supabase. Architecture, API, authentification, intégrations tierces, mise en production.</p>
+              <p style={{ "margin": "14px 0 0", "color": "rgba(244,244,245,.58)", "fontSize": "14.5px" }}>Next.js, React, TypeScript, Node.js, PostgreSQL, Supabase. Architecture, API, authentification, intégrations tierces, mise en production.</p>
               <ul style={{ "margin": "20px 0 0", "padding": "0", "listStyle": "none", "display": "flex", "flexDirection": "column", "gap": "9px", "fontSize": "13.5px", "color": "rgba(244,244,245,.72)" }}>
                 <li style={{ "display": "flex", "gap": "10px" }}><span style={{ "color": "#3845e1" }}>→</span>Plateformes métier et SaaS</li>
                 <li style={{ "display": "flex", "gap": "10px" }}><span style={{ "color": "#3845e1" }}>→</span>Paiements, géolocalisation, APIs tierces</li>
