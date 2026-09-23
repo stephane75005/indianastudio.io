@@ -133,6 +133,7 @@ export default function ChatWidget() {
   const aiMessageCountRef = useRef(0)
   const offTopicCountRef = useRef(0)
   const threadRef = useRef<HTMLDivElement>(null)
+  const widgetRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setAvailable(isStephaneAvailable())
@@ -155,6 +156,17 @@ export default function ChatWidget() {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
+  }, [open])
+
+  useEffect(() => {
+    if (!open) return
+    const onClickOutside = (e: MouseEvent) => {
+      if (widgetRef.current && !widgetRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
   }, [open])
 
   const choose = (opt: ChatOption) => {
@@ -243,7 +255,7 @@ export default function ChatWidget() {
   const hideFaqShortcuts = !aiDown && nodeId === 'root'
 
   return (
-    <>
+    <div ref={widgetRef}>
       {!open && (
         <>
           <span
@@ -405,6 +417,6 @@ export default function ChatWidget() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
