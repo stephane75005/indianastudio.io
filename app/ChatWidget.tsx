@@ -111,6 +111,19 @@ function isStephaneAvailable() {
   return isWeekday && hour >= 9 && hour < 19
 }
 
+// Le widget affiche du texte brut (pas de rendu Markdown complet) : on ne
+// parse que **gras**, seule syntaxe que le prompt IA est autorisé à
+// utiliser, pour éviter d'afficher des astérisques littéraux.
+function renderBoldSegments(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>
+    }
+    return part
+  })
+}
+
 function buildWhatsAppUrl(messages: Message[]) {
   const transcript = messages
     .map(m => (m.from === 'user' ? '➤ ' : '') + m.text)
@@ -337,7 +350,7 @@ export default function ChatWidget() {
                 color: m.from === 'bot' ? 'rgba(244,244,245,.88)' : '#fff',
                 whiteSpace: 'pre-wrap', overflowWrap: 'anywhere'
               }}>
-                {m.text}
+                {renderBoldSegments(m.text)}
               </div>
             ))}
           </div>
