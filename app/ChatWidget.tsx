@@ -334,7 +334,8 @@ export default function ChatWidget() {
                 maxWidth: '85%', padding: '10px 14px', borderRadius: '14px',
                 fontSize: '13.5px', lineHeight: 1.4,
                 background: m.from === 'bot' ? 'rgba(244,244,245,.08)' : '#3845e1',
-                color: m.from === 'bot' ? 'rgba(244,244,245,.88)' : '#fff'
+                color: m.from === 'bot' ? 'rgba(244,244,245,.88)' : '#fff',
+                whiteSpace: 'pre-wrap', overflowWrap: 'anywhere'
               }}>
                 {m.text}
               </div>
