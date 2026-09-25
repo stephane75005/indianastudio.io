@@ -314,7 +314,7 @@ export default function Home() {
             </div>
             <div style={{ "gridColumn": "span 2", "minWidth": "0" }}>
               <h2 data-reveal="" style={{ "fontSize": "clamp(28px,3.4vw,46px)", "fontWeight": "800", "lineHeight": "1.05", "letterSpacing": "-.03em", "margin": "0", "maxWidth": "26ch" }}>Peu d'intermédiaires, beaucoup d'<span style={{ "color": "#3845e1" }}>exécution</span>.</h2>
-              <p data-reveal="" style={{ "color": "rgba(244,244,245,.68)", "fontSize": "16.5px", "margin": "26px 0 0", "maxWidth": "62ch" }}>Pas de chaîne de sous-traitance, pas de brief qui se perd entre trois interlocuteurs. Vous parlez directement à ceux qui dessinent les écrans, écrivent le code et mettent en production. Sur un produit digital, c'est ce qui fait la différence entre six mois et six semaines.</p>
+              <p data-reveal="" style={{ "color": "rgba(244,244,245,.68)", "fontSize": "16.5px", "margin": "26px 0 0", "maxWidth": "62ch" }}>Pas de chaîne de sous-traitance, pas de brief qui se perd entre trois interlocuteurs. Vous parlez directement à celui qui dessine les écrans, écrit le code et met en production. Sur un produit digital, c'est ce qui fait la différence entre six mois et six semaines.</p>
               <p data-reveal="" style={{ "color": "rgba(244,244,245,.68)", "fontSize": "16.5px", "margin": "18px 0 0", "maxWidth": "62ch" }}>Basé à Paris, le studio intervient en régie ou au forfait, en autonomie complète ou intégré à une équipe produit existante. Du cadrage au déploiement, de l'idée au produit en production.</p>
             </div>
           </div>
